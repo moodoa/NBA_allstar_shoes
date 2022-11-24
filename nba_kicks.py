@@ -63,9 +63,8 @@ class NBAKICKS:
         for starter in starters:
             player_info = self.get_player_info_url(starter)
             player_shoes = self.get_player_shoes(player_info)
-            for player, shoes in player_shoes.items():
-                print(f"{shoes} ({player})")
-                print("\n")
+            print(f"{list(player_shoes.values())[0]} ({list(player_shoes.keys())[0]})")
+            print("\n")
         return ""
 
 
