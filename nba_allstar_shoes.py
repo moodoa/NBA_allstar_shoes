@@ -71,4 +71,3 @@ class NBAKICKS:
 if __name__ == "__main__":
     kicks = NBAKICKS()
     res = kicks.get_your_shoes()
-    print(res)
