@@ -5,13 +5,13 @@ from random import randint, choices
 
 
 class NBAKICKS:
-    def get_allstar_player(self):
+    def _get_allstar_player(self):
         with open("./allstar_players.json", "r") as file:
             data = json.load(file)
         return data
 
-    def get_starter_five(self):
-        all_players = self.get_allstar_player()
+    def _get_starter_five(self):
+        all_players = self._get_allstar_player()
         guard = []
         forward = []
         center = []
@@ -31,7 +31,7 @@ class NBAKICKS:
                         break
         return position
 
-    def get_player_info_url(self, player):
+    def _get_player_info_url(self, player):
         player_info = {}
         player_name = player.lower().replace(" ", "").replace("ć", "c").replace("č", "c")
         text = requests.get("https://kixstats.com/players").text
@@ -41,7 +41,7 @@ class NBAKICKS:
                 player_info[player] = tag.a["href"]
         return player_info
 
-    def get_player_shoes(self, player_info):
+    def _get_player_shoes(self, player_info):
         players_shoes = {}
         for player, url in player_info.items():
             text = requests.get(url).text
@@ -52,10 +52,10 @@ class NBAKICKS:
 
     def get_your_shoes(self):
         print("Your All Star Players Shoes Are:\n")
-        starters = self.get_starter_five()
+        starters = self._get_starter_five()
         for starter in starters:
-            player_info = self.get_player_info_url(starter)
-            player_shoes = self.get_player_shoes(player_info)
+            player_info = self._get_player_info_url(starter)
+            player_shoes = self._get_player_shoes(player_info)
             print(f"{list(player_shoes.values())[0]} ({list(player_shoes.keys())[0]})")
             print("\n")
         return ""
