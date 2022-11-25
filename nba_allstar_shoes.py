@@ -51,7 +51,7 @@ class NBAKICKS:
         return players_shoes
 
     def get_your_shoes(self):
-        print("Your All Star Players Shoes Are:\n")
+        print(f"Your All Star Players Shoes Are:\n{'-'*32}\n")
         starters = self._get_starter_five()
         for starter in starters:
             player_info = self._get_player_info_url(starter)
